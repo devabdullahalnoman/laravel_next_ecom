@@ -14,4 +14,4 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 # Expose port and run Laravel
-CMD php artisan serve --host 0.0.0.0 --port $PORT
+CMD ["frankenphp", "run", "--config", "/Caddyfile"]
