@@ -15,4 +15,4 @@ COPY . .
 RUN composer install --no-dev --optimize-autoloader
 
 # Expose port and run Laravel using PHP's built-in server
-CMD php -S 0.0.0.0:8080 -t public
+CMD php -S 0.0.0.0:8000 -t public
