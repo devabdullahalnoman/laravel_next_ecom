@@ -15,9 +15,10 @@ RUN composer install --no-dev --optimize-autoloader
 # Fix permissions for Laravel
 RUN chmod -R 775 storage bootstrap/cache
 
-# Run migrations AFTER dependencies are installed
-RUN php artisan migrate --force
+# Copy entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 8000
 
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+CMD ["/entrypoint.sh"]
