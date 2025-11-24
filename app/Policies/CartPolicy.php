@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Policies;
+
+use App\Models\Cart;
+use App\Models\User;
+
+class CartPolicy
+{
+    /**
+     * Create a new policy instance.
+     */
+
+    public function view(User $user, Cart $cart): bool
+    {
+        return $user->id === $cart->buyer_id;
+    }
+
+    public function viewAny(User $user): bool
+    {
+        return $user->isBuyer();
+    }
+
+    public function create(User $user): bool
+    {
+        return $user->isBuyer();
+    }
+
+    public function update(User $user, Cart $cart): bool
+    {
+        return $user->id === $cart->buyer_id;
+    }
+
+    public function delete(User $user, Cart $cart): bool
+    {
+        return $user->id === $cart->buyer_id;
+    }
+}
