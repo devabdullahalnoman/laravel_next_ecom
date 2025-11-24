@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y curl git unzip zip \
 # Copy project files into container
 COPY . .
 
+RUN php artisan migrate --force
+
 # Install Laravel dependencies (skip dev packages for production)
 RUN composer install --no-dev --optimize-autoloader
 
