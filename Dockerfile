@@ -14,5 +14,9 @@ COPY . .
 # Install Laravel dependencies (skip dev packages for production)
 RUN composer install --no-dev --optimize-autoloader
 
+RUN chmod -R 775 storage bootstrap/cache
+
+EXPOSE 8000
+
 # Expose port and run Laravel using PHP's built-in server
 CMD php -S 0.0.0.0:8000 -t public
