@@ -20,6 +20,9 @@ RUN chmod -R 775 storage bootstrap/cache
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+RUN apt-get update && apt-get install -y nodejs npm \
+    && npm install && npm run build
+
 EXPOSE 8000
 
 CMD ["/entrypoint.sh"]
