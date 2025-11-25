@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Run migrations on container start
-php artisan migrate:fresh && php artisan db:seed
+php artisan migrate --force
+php artisan db:seed --force
 
 php artisan config:clear && php artisan view:clear && php artisan cache:clear
 
