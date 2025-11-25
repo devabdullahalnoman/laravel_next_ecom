@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => ['required', 'string', 'email'],
-            'password' => bcrypt('required', 'string'),
+            'password' => ['required', 'string'],
         ];
     }
 
