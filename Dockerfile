@@ -25,5 +25,4 @@ RUN apt-get update && apt-get install -y nodejs npm \
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "php artisan config:clear && php artisan view:clear && php artisan cache:clear && php -S 0.0.0.0:8000 -t public"]
 CMD ["/entrypoint.sh"]
